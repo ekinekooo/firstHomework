@@ -75,8 +75,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun race(car1: Car, car2: Car): Car {
-        // implement your racing logic here
-        // for simplicity, let's say the car with the higher year wins
         return if (car1.year > car2.year) car1 else car2
     }
 
