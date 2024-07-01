@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun raceCars(numCars: Int) {
         val cars = mutableListOf<Car>()
 
-        // Create cars using the builder pattern
+        
         for (i in 1..numCars) {
             cars.add(
                 CarBuilder()
@@ -40,19 +40,19 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        // Run races and print results
+        
         while (cars.size > 1) {
             val racePair = getRandomRacePair(cars)
             println("Race between ${racePair.first.brand} ${racePair.first.model} and ${racePair.second.brand} ${racePair.second.model}")
             val winner = race(racePair.first, racePair.second)
             println("Winner: ${winner.brand} ${winner.model}")
 
-            // Remove the loser from the list
+            
             cars.removeAll { it == racePair.second || it == racePair.first }
             cars.add(winner)
         }
 
-        // Print the final winner
+        
         println("Winner: ${cars[0].brand} ${cars[0].model}")
     }
 
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         val random1 = Random().nextInt(cars.size)
         val random2 = Random().nextInt(cars.size)
 
-        // Make sure there is no single car in the pair
+        
         return if (random1 == random2) {
             Pair(cars[random1], cars[(random1 + 1) % cars.size])
         } else {
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun race(car1: Car, car2: Car): Car {
-        // Simple racing logic: the car with the higher horsepower wins
+        
         return if (car1.horsepower > car2.horsepower) car1 else car2
     }
 }
